@@ -41,4 +41,15 @@ defmodule CardsTest do
     filename = System.tmp_dir!() |> Path.join("file.txt")
     assert Cards.save(["Ace"], filename)
   end
+
+  test "load deck" do
+    filename = System.tmp_dir!() |> Path.join("file.txt")
+    Cards.save(["Ace"], filename)
+    assert Cards.load(filename) == ["Ace"]
+  end
+
+  test "the deck don't exist" do
+    filename = System.tmp_dir!() |> Path.join("file_1.txt")
+    assert Cards.load(filename) == :enoent
+  end
 end

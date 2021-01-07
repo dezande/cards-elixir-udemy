@@ -45,4 +45,12 @@ defmodule Cards do
     binary = :erlang.term_to_binary(deck)
     File.write(filename, binary)
   end
+
+  @spec load(binary) :: list()
+  def load(filename) do
+    case File.read(filename) do
+      {:ok, binary} -> :erlang.binary_to_term(binary)
+      {:error, reason} -> reason
+    end
+  end
 end
