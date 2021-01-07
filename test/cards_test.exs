@@ -38,8 +38,7 @@ defmodule CardsTest do
   end
 
   test "save deck" do
-    filename = tmp_fixture_path("file.txt")
+    filename = System.tmp_dir!() |> Path.join("file.txt")
     assert Cards.save(["Ace"], filename)
-    File.rm_rf(filename)
   end
 end
