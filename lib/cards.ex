@@ -9,4 +9,10 @@ defmodule Cards do
     deck
     |> Enum.shuffle
   end
+
+  @spec contains?(list(), binary()) :: boolean
+  def contains?(deck, card) do
+    deck
+    |> Enum.member?(card)
+  end
 end
